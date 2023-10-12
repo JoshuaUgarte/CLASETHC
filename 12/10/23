@@ -1,0 +1,263 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyPUbR5DHDpURdo6ZQAP7Uqj",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/JoshuaUgarte/CLASETHC/blob/Trabajo-en-clase/12/10/23\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 1,
+      "metadata": {
+        "id": "a6HjPA22HcK3"
+      },
+      "outputs": [],
+      "source": [
+        "def mifunc(n):\n",
+        "  return lambda a : a * n\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "midoble = mifunc(2)\n",
+        "\n",
+        "print(midoble(11))"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "jzTwP7UqHgG4",
+        "outputId": "36c1b153-e069-4fbd-8b05-c3585b7b470a"
+      },
+      "execution_count": 2,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "22\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def mifunc(n):\n",
+        "  return lambda a : a * n\n",
+        "\n",
+        "MiDoble = mifunc(2)\n",
+        "MiTriple = mifunc(3)\n",
+        "\n",
+        "print(MiDoble(11))\n",
+        "print(MiTriple(11))"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "HbKpuOrqIFjC",
+        "outputId": "855505cd-9354-4ded-db3e-2accc930dbb3"
+      },
+      "execution_count": 3,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "22\n",
+            "33\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "nums_range = range(1, 101)\n",
+        "n = list(nums_range)\n",
+        "def mifunc(n):\n",
+        "    return lambda a: a % 2 == 0\n",
+        "\n",
+        "numeros_pares = filter(mifunc(n), n)\n",
+        "print(numeros_pares)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "G_bo6sCIJmjJ",
+        "outputId": "96a3d995-cdd9-4e21-b13b-175fb569211e"
+      },
+      "execution_count": 44,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "<filter object at 0x7e1cd59edd20>\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "numeros = list(range(1, 101))\n",
+        "def es_par():\n",
+        "    return lambda a: a % 2 == 0\n",
+        "numeros_pares = filter(es_par(), numeros)\n",
+        "print(list(numeros_pares))"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "pAIYzUfFOghO",
+        "outputId": "f30ad5f8-10d0-4652-a306-e99900699d89"
+      },
+      "execution_count": 21,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "[2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 72, 74, 76, 78, 80, 82, 84, 86, 88, 90, 92, 94, 96, 98, 100]\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "contraseña = input('Introduce contraseña: ')\n",
+        "\n",
+        "if len(contraseña) < 8:\n",
+        "    print('Contraseña corta, debe tener más de 8 caracteres')\n",
+        "else:\n",
+        "    letras_minusculas = False\n",
+        "    for minus in contraseña:\n",
+        "        if minus.islower():\n",
+        "            letras_minusculas = True\n",
+        "    if not letras_minusculas:\n",
+        "        print('La contraseña debe tener al menos una minúscula')\n",
+        "    letras_mayusculas = False\n",
+        "    for mayus in contraseña:\n",
+        "        if mayus.isupper():\n",
+        "            letras_mayusculas = True\n",
+        "    if not letras_mayusculas:\n",
+        "        print('La contraseña debe tener al menos una mayúscula')\n",
+        "    numeros = False\n",
+        "    for num in contraseña:\n",
+        "        if num.isdigit():\n",
+        "            numeros = True\n",
+        "    if not numeros:\n",
+        "        print('La contraseña debe tener al menos un número')\n",
+        "    caracteres_especiales = False\n",
+        "    caracteres_especiales_validos = ['!', '#', '$', '%', '&', '/', '=', '@']\n",
+        "    for caracter in contraseña:\n",
+        "        if caracter in caracteres_especiales_validos:\n",
+        "            caracteres_especiales = True\n",
+        "    if not caracteres_especiales:\n",
+        "        print('La contraseña debe tener al menos un carácter especial')\n",
+        "\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "5Gctj9m2QFnH",
+        "outputId": "456a0160-8304-4d0d-eb74-15089a537ad4"
+      },
+      "execution_count": 42,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Introduce contraseña: ygg+iug\n",
+            "Contraseña corta, debe tener más de 8 caracteres\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def la_contraseña_que_ingresaste_es_segura(contraseña):\n",
+        "    longitud_minima = 8\n",
+        "    caracteres_especiales_validos = '!#$%&/=@'\n",
+        "\n",
+        "    condiciones_necesarias = [\n",
+        "        lambda c: len(c) >= longitud_minima,\n",
+        "        lambda c: any(char.islower() for char in c),\n",
+        "        lambda c: any(char.isupper() for char in c),\n",
+        "        lambda c: any(char.isdigit() for char in c),\n",
+        "        lambda c: any(char in caracteres_especiales_validos for char in c)\n",
+        "    ]\n",
+        "\n",
+        "    normas_de_seguridad_no_cumplidas = [condicion_texto for condicion, condicion_texto in zip(condiciones_necesarias, [\n",
+        "        \"debe tener al menos 8 caracteres\",\n",
+        "        \"debe tener al menos una minúscula\",\n",
+        "        \"debe tener al menos una mayúscula\",\n",
+        "        \"debe tener al menos un número\",\n",
+        "        \"debe tener al menos un carácter especial\"\n",
+        "    ]) if not condicion(contraseña)]\n",
+        "\n",
+        "    return normas_de_seguridad_no_cumplidas if normas_de_seguridad_no_cumplidas else \"segura\"\n",
+        "\n",
+        "contraseña = input('Introduce contraseña: ')\n",
+        "\n",
+        "resultado = la_contraseña_que_ingresaste_es_segura(contraseña)\n",
+        "\n",
+        "if resultado == \"segura\":\n",
+        "    print('Tu contraseña es segura')\n",
+        "else:\n",
+        "    print('La contraseña no cumple con las siguientes normas de seguridad:')\n",
+        "    for norma in resultado:\n",
+        "        print(norma)\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "kM2_u9f23DTt",
+        "outputId": "7a0c2a28-b146-4f10-e083-b3795be6d14c"
+      },
+      "execution_count": 41,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Introduce contraseña: Aa1#jhjh\n",
+            "Contraseña segura\n"
+          ]
+        }
+      ]
+    }
+  ]
+}
